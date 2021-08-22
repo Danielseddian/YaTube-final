@@ -1,12 +1,12 @@
 {% extends "base.html" %}
-{% block title %}{% if deal %}Изменение записи{% else %}Создание новой записи.{% endif %}{% endblock %}
-{% block header %}<center>{% if deal %}Изменение записи.{% else %}Создание новой записи.{% endif %}</center>{% endblock %}
+{% block title %}{% if post %}Изменение записи{% else %}Создание новой записи.{% endif %}{% endblock %}
+{% block header %}<center>{% if post %}Изменение записи.{% else %}Создание новой записи.{% endif %}</center>{% endblock %}
 {% block content %}
 
 <div class="row justify-content-center">
   <div class="col-md-8 p-5">
     <div class="card">
-      <div class="card-header">{% if deal %}Изменить задание.{% else %}Добавить задание.{% endif %}
+      <div class="card-header">{% if post %}Изменить запись.{% else %}Создать новую запись.{% endif %}
       </div>
 
       <div class="card-body">
@@ -37,7 +37,7 @@
 
           <div class="col-md-6 offset-md-4">
             <button type="submit" class="btn btn-primary">
-              {% if deal %}Изменить{% else %}Добавить{% endif %}
+              {% if post %}Изменить{% else %}Опубликовать{% endif %}
             </button>
           </div>
         </form>

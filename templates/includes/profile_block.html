@@ -1,7 +1,7 @@
 <div class="col-md-3 mb-3 mt-1">
   <div class="card">
     <div class="card-body">
-      <div class="h3 text-muted"><a href="{% url 'deals:profile' author.username %}">{{ author.username }}</a></div>
+      <div class="h3 text-muted"><a href="{% url 'posts:profile' author.username %}">{{ author.username }}</a></div>
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">
@@ -18,9 +18,9 @@
       {% if request.user != author %}
         <li class="list-group-item">
           {% if following %}
-            <a class="btn btn-lg btn-light" href="{% url 'deals:profile_unfollow' author.username %}" role="button">Отписаться</a>
+            <a class="btn btn-lg btn-light" href="{% url 'posts:profile_unfollow' author.username %}" role="button">Отписаться</a>
           {% else %}
-            <a class="btn btn-lg btn-primary" href="{% url 'deals:profile_follow' author.username %}" role="button">Подписаться</a>
+            <a class="btn btn-lg btn-primary" href="{% url 'posts:profile_follow' author.username %}" role="button">Подписаться</a>
           {% endif %}
         </li>
       {% endif %}

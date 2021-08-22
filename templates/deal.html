@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}{{ deal.title }}{% endblock %}
+{% block header %}{{ deal.title }}{% endblock %}
+{% block content %}
+
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-9">
+      {% include "includes\deal_item.html" with deal=deal %}
+      {% include 'includes\sub_deals.html' with form=form page=page deal=deal %}
+    </div>
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Заданий запланировано {{ deals.count }}{% endblock %}
+{% block header %}{% endblock %}
+
+{% block content %}
+<div class="container">
+  {% include "includes\menu.html" with index=True %}
+  <h1>Заданий запланировано: {{ deals.count }}</h1>
+  <div class="container">
+      {% for deal in page %}
+        {% include "includes\deal_item.html" with deal=deal %}
+      {% endfor %}
+
+    {% if page.has_other_pages %}
+      {% include "includes\paginator.html" with items=page paginator=paginator %}
+    {% endif %}
+
+  </div>
+{% endblock %}

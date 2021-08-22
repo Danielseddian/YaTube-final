@@ -1,0 +1,19 @@
+<nav class="navbar navbar-light" style="background-color: #DCDCDC;">
+  <a class="navbar-brand" href="{% url 'deals:index' %}"><span style="color:#0aa8eb;">Web</span><span  style="color:MediumSeaGreen">TO-DO</span></a>
+  {% if user.is_authenticated %}
+    <div style="float:left; margin-left:395px;">
+      <a class="navbar-brand" href="{% url 'deals:new_deal' %}">&#10133</a>
+    </div>
+  {% endif %}
+  <nav class="my-2 my-md-0 mr-md-3">
+    {% if user.is_authenticated %}
+      Пользователь:
+        <a class="p-2 text-dark"><span style="color:#4d0aeb;">{{ user.username }}</span>.</a>
+      <a class="p-2 text-dark" href="{% url 'password_change' %}">Изменить пароль</a>
+      <a class="p-2 text-dark" href="{% url 'logout' %}">Выйти</a>
+    {% else %}
+      <a class="p-2 text-dark" href="{% url 'login' %}">Войти</a> |
+      <a class="p-2 text-dark" href="{% url 'signup' %}">Регистрация</a>
+    {% endif %}
+  </nav>
+</nav>

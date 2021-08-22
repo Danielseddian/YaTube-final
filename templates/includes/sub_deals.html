@@ -1,0 +1,65 @@
+{% load user_filters %}
+
+{% if user.is_authenticated %}
+  <div class="card my-4">
+    <form action="{% url 'deals:add_sub_deal' deal.id %}" method="post">
+      {% csrf_token %}
+      <h5 class="card-header">Добавить подзадачу:</h5>
+      <div class="card-body">
+        <div class="form-group">
+          {{ form.title|addclass:"form-control" }}
+          {{ form.quantity|addclass:"form-control" }}
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить</button>
+      </div>
+    </form>
+  </div>
+{% endif %}
+
+<!-- Комментарии -->
+<h3>&#10069</h3>
+{% for sub_deal in page %}
+  {% if sub_deal.status == NOT_DONE %}
+  <div class="media card mb-4">
+    <div class="media-body card-body">
+      <h5 class="mt-0">
+        <a name="sub_deal_{{ comment.id }}">{{ sub_deal.title }}</a>
+      </h5>
+      {{ sub_deal.quantity }}
+      <small class="text-muted"></small>
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="btn-group">
+
+        {% if sub_deal.status == NOT_DONE %}
+        <a class="btn btn-sm btn-info" href="{% url 'deals:done_sub_deal' deal_id=deal.id sub_deal_id=sub_deal.id  %}" role="button">
+          <span style="color:transparent">________</span>&#9989<span style="color:transparent">________</span>
+        </a>
+        {% elif sub_deal.status == DONE %}
+        <a class="btn btn-sm btn-info" href="{% url 'deals:done_sub_deal' deal_id=deal.id sub_deal_id=sub_deal.id %}" role="button">
+          <span style="color:transparent">________</span>&#10062<span style="color:transparent">________</span>
+        </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+{% endfor %}
+<h1>&#128504</h1>
+{% for sub_deal in page %}
+  {% if sub_deal.status == DONE %}
+  <div class="media card mb-4">
+    <div class="media-body card-body">
+      <h5 class="mt-0">
+        <a name="sub_deal_{{ comment.id }}">{{ sub_deal.title }}</a>
+      </h5>
+      {{ sub_deal.quantity }}
+      <small class="text-muted"></small>
+    </div>
+  </div>
+  {% endif %}
+{% endfor %}
+
+  {% if page.has_other_pages %}
+    {% include "includes\paginator.html" with items=page paginator=paginator %}
+  {% endif %}

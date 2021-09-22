@@ -24,7 +24,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
 SECRET_KEY = 'gi$t(1h2gyl2t@e)nrsggj#d%h^406x$&ncdpqhzh1i4ykuv2b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "localhost",
@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'sorl.thumbnail',
+#    'sorl.thumbnail',
 ]
 
 MIDDLEWARE = [
